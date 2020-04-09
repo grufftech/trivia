@@ -46,8 +46,8 @@ class CreateStartTables extends Migration
           $table->id();
           $table->bigInteger('round_id')->unsigned()->index();
           $table->foreign('round_id')->references('id')->on('rounds')->onDelete('cascade');
-          $table->string('question');
-          $table->string('answer')->nullable();
+          $table->longText('question');
+          $table->longText('answer')->nullable();
           $table->timestamps();
       });
       Schema::create('answers', function (Blueprint $table) {
@@ -56,14 +56,14 @@ class CreateStartTables extends Migration
           $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
           $table->bigInteger('team_id')->unsigned()->index();
           $table->foreign('team_id')->references('id')->on('teams');
-          $table->string('answer');
+          $table->longText('answer');
           $table->double('credit')->default(0);
           $table->timestamps();
       });
         Schema::create('Jeopardy', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
-            $table->string('answer');
+            $table->longText('question');
+            $table->longText('answer');
             $table->timestamps();
         });
     }

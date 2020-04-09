@@ -29,7 +29,20 @@ class Admin extends Controller
     }
     public function showGameAdmin($id){
       $game = Game::findOrFail($id);
-      return view('admin.show',compact('game'));
+      $scores = DB::select('SELECT
+          	sum(answers.credit) as points,
+          	teams.name,
+            max(teams.id) as id,
+	          count(questions.id) as question_count
+          FROM answers
+          JOIN questions ON answers.question_id = questions.id
+          JOIN rounds on questions.round_id = rounds.id
+          JOIN teams ON answers.team_id = teams.id
+          JOIN games on rounds.game_id = games.id
+          WHERE games.id = '.$id.'
+          group by teams.name
+          order by points desc');
+      return view('admin.show',compact('game','scores'));
     }
     public function showGradeRoundAdmin($id){
         $round = Round::with('questions')->findOrFail($id);
