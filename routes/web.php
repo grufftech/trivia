@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'Play@index')->name('home');
 Route::get('/play/', 'Play@index')->name('play.index');
 Route::get('/play/{id}', 'Play@game')->name('play.joingame');

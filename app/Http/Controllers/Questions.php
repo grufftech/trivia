@@ -31,12 +31,12 @@ class Questions extends Controller
     $question = Question::findOrFail($id);
     $input = Request::all();
     $question->update($input);
-    return back()->withInput();
+    return redirect()->route('games.show',$question->round->game_id);
   }
   public function delete($id)
   {
     $question = Question::findOrFail($id);
     $question->delete();
-    return back()->withInput();
+    return redirect()->route('games.show',$question->round->game_id);
   }
 }
