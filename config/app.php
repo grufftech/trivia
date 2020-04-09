@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://trivia.test'),
+    'url' => env('APP_URL', 'https://trivia.gruff.tech/'),
 
     'asset_url' => env('ASSET_URL', null),
 
