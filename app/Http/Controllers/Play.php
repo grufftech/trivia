@@ -28,9 +28,9 @@ class Play extends Controller
           return redirect()->route('login');
         }
         $game = Game::findOrFail($id);
-        $team_id = DB::table('teams')->join('members', 'members.team_id', '=', 'teams.id')->where('game_id',$game->id)->where('user_id',\Auth::user()->id)->first();
-        if ($team_id){
-          $team = Team::Where("id",$team_id->id)->Where("game_id",$game->id)->first();
+        $team = DB::table('teams')->join('members', 'members.team_id', '=', 'teams.id')->where('game_id',$game->id)->where('user_id',\Auth::user()->id)->first();
+        if (!$team){
+          return view('play.jointeam',compact('game'));
         }
         return view('play.show',compact('game','team'));
       }

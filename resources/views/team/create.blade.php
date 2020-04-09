@@ -1,4 +1,3 @@
-<div class='col-md-6 col-md-offset-3'>
 <h3>Join with New Team</h3>
 <hr>
 
