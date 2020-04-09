@@ -29,7 +29,7 @@ class Games extends Controller
       $rounds = Round::where('game_id',$id)->with('questions')->get();
       $round_count = Round::where('game_id',$id)->count()+1;
       $jeopardy = Jeopardy::inRandomOrder()->firstOrFail();
-      return view('game.show',compact('game','rounds','round_count','questions','jeopardy'));
+      return view('game.show',compact('game','rounds','round_count','jeopardy'));
     }
     public function edit($id)
     {
