@@ -36,7 +36,8 @@ class Answers extends Controller
         $ans->credit = 1;
         $ans->save();
       }
-      return redirect()->back();
+
+      echo "saved ".$ans->answer;
     }
   }
   public function update(Request $request, $id)

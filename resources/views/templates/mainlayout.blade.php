@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Pixel Lite - Open Source Bootstrap UI Kit</title>
+    <title>Online Trivia</title>
     @include('templates.head')
 </head>
 <body>

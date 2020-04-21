@@ -30,19 +30,18 @@
                                 <tr>
                                     <td scope="col">{{$answer->team->name}}</td>
                                     <td scope="col">{{$answer->answer}}</td>
-                                    <td scope="col">{{$answer->credit}}</td>
+                                    <td scope="col"><iframe style="height:35px;width:35px" name="credit{{$answer->id}}" src=/admin/answer/get/{{$answer->id}}></iframe></td>
                                     <td scope="col">
-                                      {{Form::open(array('route' => array('admin.grade', $answer->id),'class' => 'form-inline'))}}
-
+                                      {{Form::open(array('route' => array('admin.answer.grade', $answer->id),'class' => 'form-inline','target' => 'credit'.$answer->id))}}
                                       <div class="form-group">
                                       {!! Form::hidden('credit', 1, ['class' => 'form-control']) !!}
                                       {!! Form::submit('1', ['class' => 'btn btn-sm btn-primary']) !!}
                                       {!! Form::close() !!}
-                                      {{Form::open(array('route' => array('admin.grade', $answer->id)))}}
+                                      {{Form::open(array('route' => array('admin.answer.grade', $answer->id),'target' => 'credit'.$answer->id))}}
                                       {!! Form::hidden('credit', 0.5, ['class' => 'form-control']) !!}
                                       {!! Form::submit('0.5', ['class' => 'btn btn-sm btn-primary']) !!}
                                       {!! Form::close() !!}
-                                      {{Form::open(array('route' => array('admin.grade', $answer->id)))}}
+                                      {{Form::open(array('route' => array('admin.answer.grade', $answer->id),'target' => 'credit'.$answer->id))}}
                                       {!! Form::hidden('credit', 0, ['class' => 'form-control']) !!}
                                       {!! Form::submit('0', ['class' => 'btn btn-sm btn-primary']) !!}
                                       {!! Form::close() !!}
@@ -64,7 +63,7 @@
 
                      </div>
 
-                     <a href={{$url = action('Admin@index')}}>go back</a>
+                     <a href=/admin/{{$round->game->id}}>go back</a>
 
 
              </div>

@@ -8,11 +8,6 @@
              <div class="col-12">
                  <div class="card border-light px-4 py-5">
                      <div class="card-header bg-white pb-0">
-                      <a href={{$url = action('Admin@index')}}>go back</a>
-
-
-
-
                          <h2 class="h1 mb-3">{{$game->name}}</h2>
                          <h2><a class="btn btn-sm btn-primary" href={{$url = action('Games@show',[$game->id])}}>Edit Rounds & Questions</a></h2>
                          <hr>
@@ -76,8 +71,8 @@
                           <a class="btn btn-sm btn-primary"  onclick="return confirm('Are you sure you want to delete this?')" href={{$url = action('Games@delete',[$game->id])}}>Delete Trivia</a>
                      </div>
 
-
              </div>
+             <a href={{$url = action('Admin@index')}}>go back</a>
          </div>
      </div>
   </div>

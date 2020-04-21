@@ -53,11 +53,15 @@ class Admin extends Controller
         return view('admin.showround',compact('round','questions'));
     }
 
+    public function view($id){
+      $answer = Answer::findOrFail($id);
+      echo $answer->credit;
+    }
     public function grade(Request $request, $id)
     {
       $answer = Answer::findOrFail($id);
       $input = Request::all();
       $answer->update($input);
-      return redirect()->back();
+      echo $answer->credit;
     }
 }

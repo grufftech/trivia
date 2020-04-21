@@ -12,14 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'Play@index')->name('home');
+Route::get('', 'Play@index')->name('home');
 Route::get('/play/', 'Play@index')->name('play.index');
 Route::get('/play/{id}', 'Play@game')->name('play.joingame');
 Route::get('/play/{gameid}/round/{roundid}', 'Play@round')->name('play.round');
 
 Route::get( '/admin/', 'Admin@index' )->name( 'admin.index' );
 Route::get('/admin/{id}', 'Admin@showGameAdmin')->name('admin.show');
-Route::post('/admin/grade/{id}', 'Admin@grade')->name('admin.grade');
+Route::get('/admin/answer/get/{id}', 'Admin@view')->name('admin.answer.get');
+Route::post('/admin/answer/edit/{id}', 'Admin@grade')->name('admin.answer.grade');
 Route::get('/admin/grade-round/{id}', 'Admin@showGradeRoundAdmin')->name('admin.grade-round');
 Route::get( '/admin/dump', 'Admin@dump' )->name( 'admin.dump' );
 

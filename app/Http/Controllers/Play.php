@@ -21,8 +21,6 @@ class Play extends Controller
         return view('play.index',compact('games'));
       }
 
-
-
       public function game($id){
         if (!\Auth::check()) {
           return redirect()->route('login');
@@ -43,6 +41,10 @@ class Play extends Controller
         $questions = DB::table('questions')
           ->leftJoin('answers', 'questions.id', '=', 'answers.question_id')
           ->where('round_id',$round->id)
+            ->where(function ($query) use ($team) {
+                $query->where('team_id',$team->id)
+                      ->orWhereNull('team_id');
+            })
           ->select('questions.*','answers.answer as teamAnswer','answers.id as teamAnswerId')
           ->orderby('id','asc')
           ->get();
