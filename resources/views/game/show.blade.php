@@ -31,6 +31,7 @@
 
                          @include('round.create')
 
+                         <a href={{$url = action('Admin@index')}}>go back</a>
              </div>
          </div>
      </div>
