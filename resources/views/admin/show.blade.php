@@ -9,7 +9,8 @@
                  <div class="card border-light px-4 py-5">
                      <div class="card-header bg-white pb-0">
                          <h2 class="h1 mb-3">{{$game->name}}</h2>
-                         <h2><a class="btn btn-sm btn-primary" href={{$url = action('Games@show',[$game->id])}}>Edit Rounds & Questions</a></h2>
+
+                         <h2><a class="btn btn-sm btn-primary" href={{$url = action('Games@show',[$game->id])}}><i class="fas fa-edit"></i> Edit Game, Rounds & Questions</a></h2>
                          <hr>
                           <h3>Teams & Scores</h3>
                           <div class="col-lg-12">

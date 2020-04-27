@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('', 'Play@index')->name('home');
+
+Route::get('/', 'Play@index')->name('play.index');
 Route::get('/play/', 'Play@index')->name('play.index');
 Route::get('/play/{id}', 'Play@game')->name('play.joingame');
 Route::get('/play/{gameid}/round/{roundid}', 'Play@round')->name('play.round');
@@ -29,8 +30,6 @@ Route::get( '/auth0/callback', '\Auth0\Login\Auth0Controller@callback' )->name( 
 Route::get( '/login', 'Auth\Auth0IndexController@login' )->name( 'login' );
 Route::get( '/logout', 'Auth\Auth0IndexController@logout' )->name( 'logout' )->middleware('auth');
 
-Route::get('/games/', 'Games@index')->name('games.index');
-Route::post('/games/', 'Games@create')->name('games.create');
 Route::get('/games/{id}', 'Games@show')->name('games.show');
 Route::get('/games/edit/{id}', 'Games@edit')->name('games.edit');
 Route::post('/games/edit/{id}', 'Games@update')->name('games.update');

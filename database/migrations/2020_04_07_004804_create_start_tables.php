@@ -16,22 +16,16 @@ class CreateStartTables extends Migration
       Schema::create('games', function (Blueprint $table) {
           $table->id();
           $table->string('name');
-          $table->string('streamurl');
+          $table->string('streamurl')->nullable();
+          $table->boolean('show_questions')->default(false);
           $table->timestamps();
       });
       Schema::create('teams', function (Blueprint $table) {
           $table->id();
           $table->bigInteger('game_id')->unsigned()->index();
           $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
+          $table->bigInteger('user_id')->unsigned()->index()->default(0);
           $table->string('name');
-          $table->timestamps();
-      });
-      Schema::create('members', function (Blueprint $table) {
-          $table->id();
-          $table->bigInteger('team_id')->unsigned()->index();
-          $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
-          $table->bigInteger('user_id')->unsigned()->index();
-          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
           $table->timestamps();
       });
       Schema::create('rounds', function (Blueprint $table) {

@@ -18,17 +18,12 @@ class Games extends Controller
     Route::post('/games/{id}', 'Games@edit')->name('games.edit');
     Route::delete('/games/{id}', 'Games@delete')->name('games.delete');*/
 
-    public function index()
-    {
-      $games = Game::all();
-      return view('game.index',compact('games'));
-    }
     public function show($id)
     {
       $game = Game::findOrFail($id);
       $rounds = Round::where('game_id',$id)->with('questions')->get();
       $round_count = Round::where('game_id',$id)->count()+1;
-      $jeopardy = Jeopardy::inRandomOrder()->firstOrFail();
+      $jeopardy = Jeopardy::inRandomOrder()->first();
       return view('game.show',compact('game','rounds','round_count','jeopardy'));
     }
     public function edit($id)

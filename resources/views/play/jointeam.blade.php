@@ -9,9 +9,9 @@
                      <div class="card-header bg-white pb-0">
                          <h2 class="h1 mb-3"><i class="fas fa-hot-tub mr-2"></i> {{$game->name}}</h2>
                          @include('team.create')
+                          <a href={{$url = action('Play@index')}}>go back</a>
                      </div>
                  </div>
-                  <a href={{$url = action('Play@index')}}>go back</a>
              </div>
          </div>
      </div>

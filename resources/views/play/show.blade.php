@@ -18,7 +18,7 @@
                              <div class="col-12 mt-2">
 
                                {{ Form::open(array('url' => '/play/'.$game->id.'/round/'.$round->id,'method' => 'get')) }}
-                                   <button type="submit" class="btn btn-primary rounded-right" {!! ($round->accepting_answers==FALSE? 'disabled' : '') !!} >{{ $round->name }}</button>
+                                   <button type="submit" class="btn {!! ($round->accepting_answers==FALSE? 'btn-light' : 'btn-primary') !!} rounded-right" >{{ $round->name }}</button>
                                {!! Form::close() !!}
                              </div>
                          @empty

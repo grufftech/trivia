@@ -17,16 +17,18 @@ use Form;
 class Play extends Controller
 {
       public function index(){
+
+        if (!\Auth::check()) {
+          return redirect()->route('login');
+        }
         $games = Game::all();
         return view('play.index',compact('games'));
       }
 
       public function game($id){
-        if (!\Auth::check()) {
-          return redirect()->route('login');
-        }
+        $userId = \Auth::user()->id;
         $game = Game::findOrFail($id);
-        $team = DB::table('teams')->join('members', 'members.team_id', '=', 'teams.id')->where('game_id',$game->id)->where('user_id',\Auth::user()->id)->first();
+        $team = Team::where('user_id',$userId)->where('game_id',$id)->first();
         if (!$team){
           return view('play.jointeam',compact('game'));
         }
@@ -34,19 +36,18 @@ class Play extends Controller
       }
 
       public function round($gameid,$roundid){
+        $userId = \Auth::user()->id;
         $game = Game::findOrFail($gameid);
         $round = Round::findOrFail($roundid);
-        $team_id = DB::table('teams')->join('members', 'members.team_id', '=', 'teams.id')->where('game_id',$game->id)->where('user_id',\Auth::user()->id)->first();
-        $team = Team::findOrFail($team_id->id);
+
+        $team = Team::where('user_id',$userId)->where('game_id',$gameid)->first();
         $questions = DB::table('questions')
-          ->leftJoin('answers', 'questions.id', '=', 'answers.question_id')
+          ->leftJoin('answers', function ($join) use ($team) {
+            $join->on('questions.id','=','answers.question_id')
+              ->where('answers.team_id','=', $team->id);
+          })
           ->where('round_id',$round->id)
-            ->where(function ($query) use ($team) {
-                $query->where('team_id',$team->id)
-                      ->orWhereNull('team_id');
-            })
           ->select('questions.*','answers.answer as teamAnswer','answers.id as teamAnswerId')
-          ->orderby('id','asc')
           ->get();
         return view('play.play',compact('game','round','questions','team'));
       }

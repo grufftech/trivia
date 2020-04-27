@@ -30,7 +30,7 @@ class Auth0IndexController extends Controller
     {
         \Auth::logout();
         $logoutUrl = sprintf(
-            'https://%s/v2/logout?client_id=%s&returnTo=%s',
+            'https://%s/v2/logout?client_id=%s&returnTo=/play',
             env('AUTH0_DOMAIN'),
             env('AUTH0_CLIENT_ID'),
             env('APP_URL'));

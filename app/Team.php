@@ -11,8 +11,8 @@ class Team extends Model
     public function game(){
         return $this->belongsTo('App\Game');
     }
-    public function members(){
-      return $this->hasMany('App\Members');
+    public function user(){
+        return $this->belongsTo('App\User');
     }
     public function answers(){
       return $this->hasMany('App\Answers');
