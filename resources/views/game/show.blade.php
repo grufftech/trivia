@@ -28,7 +28,7 @@
                           @forelse($rounds as $round)
 
                           <div class="card border-light px-4 py-5">
-                              <div class="card-header bg-white pb-0">
+                            <div class="card-header bg-white pb-0">
                             <h4>
                             {{ $round->name }}
                             <a href="{{ route('rounds.edit', $round->id) }}"><i class="fas fa-edit"></i></a>
