@@ -58,7 +58,7 @@
                              <p>There are no questions to display!</p>
                              @endforelse
 
-                             <a class="btn btn-primary" href=/admin/grade-round/{{$round->id}}>Close & Grade Round</a>
+                             <a class="btn btn-primary"  onclick="return confirm('Are you sure you want to close this round?')"  href=/admin/grade-round/{{$round->id}}>Close & Grade Round</a>
                              <hr>
 
                          </div>
