@@ -21,7 +21,7 @@
                                           <span class="text-primary"><a href={{$url = action('Teams@edit',[$team->id])}}><i class="fas fa-edit"></i></a> {{ $team->name }} <a href={{$url = action('Teams@delete',[$team->id])}}><i class="fas fa-trash"></i></a></span>
                                       </div>
                                       <div class="progress-percentage">
-                                          <span>{{ ($team->points }}</span>
+                                          <span>{{ $team->points }}</span>
                                       </div>
                                   </div>
                                   <div class="progress">
