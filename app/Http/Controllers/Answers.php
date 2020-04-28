@@ -32,7 +32,7 @@ class Answers extends Controller
     }else{
       Answer::where('team_id',$input['team_id'])->where('question_id',$question->id)->delete();
       $ans = Answer::create($input);
-      if (strcasecmp($ans->answer, $question->answer)){
+      if (Str::contains(strtolower($ans->answer), strtolower($question->answer))){
         $ans->credit = 1;
         $ans->save();
       }
