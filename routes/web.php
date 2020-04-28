@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Play@index')->name('play.index');
 Route::get('/play/', 'Play@index')->name('play.index');
 Route::get('/play/{id}', 'Play@game')->name('play.joingame');
 Route::get('/play/{gameid}/round/{roundid}', 'Play@round')->name('play.round');
