@@ -17,10 +17,6 @@ use Form;
 class Play extends Controller
 {
       public function index(){
-
-        if (!\Auth::check()) {
-          return redirect()->route('login');
-        }
         $games = Game::all();
         return view('play.index',compact('games'));
       }
