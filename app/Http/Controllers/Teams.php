@@ -35,7 +35,7 @@ class Teams extends Controller
   }
   public function delete($id)
   {
-    $team = Teams::findOrFail($id);
+    $team = Team::findOrFail($id);
     $team->delete();
     return redirect()->route('admin.show',$team->game_id);
   }

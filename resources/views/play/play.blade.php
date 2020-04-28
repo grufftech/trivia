@@ -20,7 +20,7 @@
                                  @if ($round->accepting_answers == FALSE)
                                   {!! Form::text('answer', $q->teamAnswer, ['class' => 'form-control','id' => 'answer'.$loop->iteration, 'disabled'=>'true']) !!}
                                  @else
-                                  {!! Form::text('answer', $q->teamAnswer, ['class' => 'form-control','id' => 'answer'.$loop->iteration]) !!}
+                                  {!! Form::text('answer', $q->teamAnswer, ['autocomplete'=>'off','class' => 'form-control','id' => 'answer'.$loop->iteration]) !!}
                                  @endif
                                  {!! Form::hidden('question_id', $q->id, ['class' => 'form-control']) !!}
                                  {!! Form::hidden('team_id', $team->id, ['class' => 'form-control']) !!}

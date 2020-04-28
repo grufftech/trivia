@@ -49,7 +49,7 @@ class CreateStartTables extends Migration
           $table->bigInteger('question_id')->unsigned()->index();
           $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
           $table->bigInteger('team_id')->unsigned()->index();
-          $table->foreign('team_id')->references('id')->on('teams');
+          $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
           $table->longText('answer');
           $table->double('credit')->default(0);
           $table->timestamps();

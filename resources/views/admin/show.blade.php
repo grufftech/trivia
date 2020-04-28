@@ -18,10 +18,10 @@
                               <div class="progress-wrapper">
                                   <div class="progress-info">
                                       <div class="progress-label">
-                                          <span class="text-primary"><a href={{$url = action('Teams@edit',[$team->id])}}><i class="fas fa-edit"></i></a> {{ $team->name }}</span>
+                                          <span class="text-primary"><a href={{$url = action('Teams@edit',[$team->id])}}><i class="fas fa-edit"></i></a> {{ $team->name }} <a href={{$url = action('Teams@delete',[$team->id])}}><i class="fas fa-trash"></i></a></span>
                                       </div>
                                       <div class="progress-percentage">
-                                          <span>{{ $team->points}}</span>
+                                          <span>{{ ($team->points * 100 / $team->question_count) }}</span>
                                       </div>
                                   </div>
                                   <div class="progress">
