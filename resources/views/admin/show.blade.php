@@ -14,23 +14,18 @@
                          <hr>
                           <h3>Teams & Scores</h3>
                           <div class="col-lg-12">
-                          @forelse($scores as $team)
-                              <div class="progress-wrapper">
-                                  <div class="progress-info">
-                                      <div class="progress-label">
-                                          <span class="text-primary"><a href={{$url = action('Teams@edit',[$team->id])}}><i class="fas fa-edit"></i></a> {{ $team->name }} <a href={{$url = action('Teams@delete',[$team->id])}}><i class="fas fa-trash"></i></a></span>
-                                      </div>
-                                      <div class="progress-percentage">
-                                          <span>{{ $team->points }}</span>
-                                      </div>
-                                  </div>
-                                  <div class="progress">
-                                      <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{ $team->points}}" aria-valuemin="0" aria-valuemax="{{ $team->question_count}}" style="width: 50%; animation: 3s ease 0s 1 normal none running animate-positive; opacity: 1;"></div>
-                                  </div>
-                              </div>
+                            <ol>
+                              @forelse($scores as $team)
+                              <li>
+                                {{ $team->name . "(".$team->points." points) "}}
+                                <a href={{$url = action('Teams@edit',[$team->id])}}><i class="fas fa-edit"></i></a>
+                                <a onclick="return confirm('Are you sure you want to delete this?')" href={{$url = action('Teams@delete',[$team->id])}}><i class="fas fa-trash"></i></a>
+                              </li>
+
                               @empty
-                               <p>There are no teams to display!</p>
+                              <p>There are no teams to display!</p>
                               @endforelse
+                            </ol>
                           </div>
 
                           <hr>
