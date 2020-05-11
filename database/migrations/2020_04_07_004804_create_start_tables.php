@@ -54,7 +54,7 @@ class CreateStartTables extends Migration
           $table->double('credit')->default(0);
           $table->timestamps();
       });
-        Schema::create('Jeopardy', function (Blueprint $table) {
+        Schema::create('jeopardy', function (Blueprint $table) {
             $table->id();
             $table->longText('question');
             $table->longText('answer');
