@@ -20,7 +20,7 @@ services:
     depends_on:
       - mariadb
     ports:
-      - 8080:3000
+      - 80:3000
     volumes:
       - ./:/app
     # privileged: true # Privileged mode could be required to run this container under Windows

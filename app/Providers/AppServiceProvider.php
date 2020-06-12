@@ -13,6 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        
+        // For more information see: https://github.com/auth0/auth0-PHP/issues/56
+        \Firebase\JWT\JWT::$leeway = 60;
+
         $this->app->bind(
             \Auth0\Login\Contract\Auth0UserRepository::class,
             \App\Repositories\CustomUserRepository::class
