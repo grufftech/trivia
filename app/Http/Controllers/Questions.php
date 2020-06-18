@@ -23,8 +23,7 @@ class Questions extends Controller
   {
     $input = Request::all();
     $question = Question::create($input);
-
-    return back();
+    echo "saved ".$question->question;
   }
   public function update(Request $request, $id)
   {

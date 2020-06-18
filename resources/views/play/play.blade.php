@@ -31,7 +31,7 @@
                        @endforeach
                       <a class="btn btn-primary" onclick="return confirm('Submit Round?')"  href={{route('play.joingame',$game->id)}}>Submit Round</a>
                  </div>
-                  <iframe name="my_iframe" src="" style="width: 100%; height:1500px; display:all;"></iframe>
+                  <iframe name="my_iframe" src=""></iframe>
              </div>
          </div>
      </div>
