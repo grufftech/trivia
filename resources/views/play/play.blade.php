@@ -16,7 +16,7 @@
                        @foreach ($questions as $q)
                             {{Form::open(array('route' => 'answers.create', 'target'=>'my_iframe','id' => 'formAnswers'.$loop->iteration))}}
                             <div class="form-group">
-                                 {!! Form::label('answer', 'Question '.$loop->iteration.':'.($game->show_questions? $q->question:"")) !!}
+                                 <h1>{!! Form::label('answer', 'Question '.$loop->iteration.':'.($game->show_questions? $q->question:"")) !!}</h1>
                                  @if ($round->accepting_answers == FALSE)
                                   {!! Form::text('answer', $q->teamAnswer, ['class' => 'form-control','id' => 'answer'.$loop->iteration, 'disabled'=>'true']) !!}
                                  @else
@@ -26,10 +26,11 @@
                                  {!! Form::hidden('team_id', $team->id, ['class' => 'form-control']) !!}
                              </div>
 
-                             {!! Form::submit('Save', ['class' => 'btn btn-primary form-control invisible']) !!}
+                             {!! Form::submit('Save Answer', ['onclick'=>'this.classList.add("btn-success"); this.value="saved"; this.submit(); this.disabled=true; ','class' => 'btn btn-primary form-control']) !!}
                          </form>
                        @endforeach
-                      <a class="btn btn-primary" onclick="return confirm('Submit Round?')"  href={{route('play.joingame',$game->id)}}>Submit Round</a>
+                       <hr>
+                      <a class="" href={{route('play.joingame',$game->id)}}>Go Back</a>
                  </div>
                   <iframe name="my_iframe" src=""></iframe>
              </div>
