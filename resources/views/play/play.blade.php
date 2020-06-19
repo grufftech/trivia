@@ -30,8 +30,8 @@
                          </form>
                        @endforeach
                        <hr>
-                      <a class="" href={{route('play.joingame',$game->id)}}>Go Back</a>
                  </div>
+                      <a class="btn btn-primary form-control" href={{route('play.joingame',$game->id)}}>Submit Round</a>
                   <iframe name="my_iframe" src=""></iframe>
              </div>
          </div>
