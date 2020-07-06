@@ -12,27 +12,27 @@
                      </div>
 
                      {!! ($round->accepting_answers==FALSE? "<div class='alert alert-danger'>Round is no longer accepting answers</div>":"") !!}
+                     {!! (\Session::has('success')? "<div class='alert alert-success'>".\Session::get('success')."</div>":"") !!}
 
+                      {{Form::open(array('route' => 'answers.submitall'))}}
+                      {!! Form::hidden('team_id', $team->id, ['class' => 'form-control']) !!}
+                      {!! Form::hidden('round_id', $round->id, ['class' => 'form-control']) !!}
                        @foreach ($questions as $q)
-                            {{Form::open(array('route' => 'answers.create', 'target'=>'my_iframe','id' => 'formAnswers'.$loop->iteration))}}
                             <div class="form-group">
                                  <h1>{!! Form::label('answer', 'Question '.$loop->iteration.':'.($game->show_questions? $q->question:"")) !!}</h1>
+
                                  @if ($round->accepting_answers == FALSE)
-                                  {!! Form::text('answer', $q->teamAnswer, ['class' => 'form-control','id' => 'answer'.$loop->iteration, 'disabled'=>'true']) !!}
+                                  {!! Form::text('answer['.$q->id.']', $q->teamAnswer, ['class' => 'form-control', 'disabled'=>'true']) !!}
                                  @else
-                                  {!! Form::text('answer', $q->teamAnswer, ['autocomplete'=>'off','class' => 'form-control','id' => 'answer'.$loop->iteration]) !!}
+                                  {!! Form::text('answer['.$q->id.']', $q->teamAnswer, ['autocomplete'=>'off','class' => 'form-control']) !!}
                                  @endif
-                                 {!! Form::hidden('question_id', $q->id, ['class' => 'form-control']) !!}
-                                 {!! Form::hidden('team_id', $team->id, ['class' => 'form-control']) !!}
                              </div>
 
-                             {!! Form::submit('Save Answer', ['onclick'=>'this.classList.add("btn-success"); this.value="saved"; this.submit(); this.disabled=true; ','class' => 'btn btn-primary form-control']) !!}
-                         </form>
-                       @endforeach
-                       <hr>
-                 </div>
-                      <a class="btn btn-primary form-control" href={{route('play.joingame',$game->id)}}>Submit Round</a>
-                  <iframe name="my_iframe" src=""></iframe>
+                        @endforeach
+                        <hr>
+                        {!! Form::submit('Submit Round', ['class' => 'btn btn-primary form-control']) !!}
+                        </form>
+                    </div>
              </div>
          </div>
      </div>

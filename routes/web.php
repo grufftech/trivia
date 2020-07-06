@@ -60,6 +60,7 @@ Route::get('/teams/delete/{id}', 'Teams@delete')->name('teams.delete');
 
 Route::get('/answers/', 'Answers@index')->name('answers.index');
 Route::post('/answers/', 'Answers@create')->name('answers.create');
+Route::post('/answers/save/', 'Answers@submitAll')->name('answers.submitall');
 Route::get('/answers/{id}', 'Answers@show')->name('answers.show');
 Route::get('/answers/edit/{id}', 'Answers@edit')->name('answers.edit');
 Route::post('/answers/edit/{id}', 'Answers@update')->name('answers.update');

@@ -21,38 +21,3 @@
 
 <!-- pixel JS -->
 <script src="/assets/js/pixel.js"></script>
-
-
-
-<script>
-$('#answer1').change(function(e){
-       $('#formAnswers1').submit();
-});
-$('#answer2').change(function(e){
-       $('#formAnswers2').submit();
-});
-$('#answer3').change(function(e){
-       $('#formAnswers3').submit();
-});
-$('#answer4').change(function(e){
-       $('#formAnswers4').submit();
-});
-$('#answer5').change(function(e){
-       $('#formAnswers5').submit();
-});
-$('#answer6').change(function(e){
-       $('#formAnswers6').submit();
-});
-$('#answer7').change(function(e){
-       $('#formAnswers7').submit();
-});
-$('#answer8').change(function(e){
-       $('#formAnswers8').submit();
-});
-$('#answer9').change(function(e){
-       $('#formAnswers9').submit();
-});
-$('#answer10').change(function(e){
-       $('#formAnswers10').submit();
-});
-</script>
