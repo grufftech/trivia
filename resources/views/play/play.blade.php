@@ -30,7 +30,12 @@
 
                         @endforeach
                         <hr>
-                        {!! Form::submit('Submit Round', ['class' => 'btn btn-primary form-control']) !!}
+                        
+                        @if ($round->accepting_answers == FALSE)
+                            <a href={{route('play.joingame',$game->id)}}>go back</a>
+                        @else
+                            {!! Form::submit('Submit Round', ['class' => 'btn btn-primary form-control']) !!}
+                        @endif
                         </form>
                     </div>
              </div>
