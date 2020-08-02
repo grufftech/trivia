@@ -23,6 +23,7 @@ Route::get('/admin/{id}', 'Admin@showGameAdmin')->name('admin.show');
 Route::get('/admin/answer/get/{id}', 'Admin@view')->name('admin.answer.get');
 Route::post('/admin/answer/edit/{id}', 'Admin@grade')->name('admin.answer.grade');
 Route::get('/admin/grade-round/{id}', 'Admin@showGradeRoundAdmin')->name('admin.grade-round');
+Route::get('/admin/unlock-round/{id}', 'Admin@unlockRound')->name('admin.unlock-round');
 Route::get( '/admin/dump', 'Admin@dump' )->name( 'admin.dump' );
 
 

@@ -8,6 +8,8 @@ services:
       - MARIADB_USER=my_user
       - MARIADB_DATABASE=my_database
       - MARIADB_PASSWORD=my_password
+    ports:
+      - 3306:3306
 
   myapp:
     tty: true

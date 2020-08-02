@@ -32,30 +32,20 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                          @forelse($game->rounds as $round)
                          <div>
-                           <h2>{{ $round->name }}</h2>
-                             @forelse($round->questions as $question)
+                           <h4>{{ $round->name }} - {{$round->accepting_answers ? "Closed" : "Open"}}</h4>
+                           @if($round->accepting_answers)
+                           <a class="btn btn-danger"  onclick="return confirm('Are you sure you want to close this round?')"  href=/admin/grade-round/{{$round->id}}>Close & Grade {{ $round->name }}</a>
+                           @forelse($round->questions as $question)
                                <p><small class="text-muted">Question {{$loop->iteration}}:</small> {{ $question->question}}</p>
                              @empty
-                             <p>There are no questions to display!</p>
+                              <p>There are no questions to display!</p>
                              @endforelse
-
-                             <a class="btn btn-primary"  onclick="return confirm('Are you sure you want to close this round?')"  href=/admin/grade-round/{{$round->id}}>Close & Grade Round</a>
+                           @else
+                           <a class="btn btn-success" href=/admin/unlock-round/{{$round->id}}>Reopen {{ $round->name }}</a>
+                           @endif
                              <hr>
-
                          </div>
                          @empty
                          <p>There are no rounds to display!</p>

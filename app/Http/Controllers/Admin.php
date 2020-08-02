@@ -52,6 +52,12 @@ class Admin extends Controller
         $questions = Question::with('answers')->where('round_id',$round->id)->get();
         return view('admin.showround',compact('round','questions'));
     }
+    public function unlockRound($id){
+        $round = Round::findOrFail($id);
+        $round->accepting_answers = true;
+        $round->save();
+        return redirect()->back();
+    }
 
     public function view($id){
       $answer = Answer::findOrFail($id);

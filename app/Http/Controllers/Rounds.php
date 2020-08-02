@@ -27,6 +27,13 @@ class Rounds extends Controller
     $round->update($input);
     return redirect()->route('games.show',$round->game_id);
   }
+  public function unlock(id)
+  {
+    $round = Round::findOrFail($id);
+    $round->accepting_answers = true;
+    $round->save();
+    return redirect()->route('games.show',$round->game_id);
+  }
   public function delete($id)
   {
     $round = Round::findOrFail($id);
