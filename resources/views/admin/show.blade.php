@@ -27,7 +27,6 @@
                               @endforelse
                             </ol>
                           </div>
-
                           <hr>
 
 
@@ -36,7 +35,7 @@
                          <div>
                            <h4>{{ $round->name }} - {{$round->accepting_answers ? "Closed" : "Open"}}</h4>
                            @if($round->accepting_answers)
-                           <a class="btn btn-danger"  onclick="return confirm('Are you sure you want to close this round?')"  href=/admin/grade-round/{{$round->id}}>Close & Grade {{ $round->name }}</a>
+                            <a class="btn btn-danger"  onclick="return confirm('Are you sure you want to close this round?')"  href=/admin/grade-round/{{$round->id}}>Close & Grade {{ $round->name }}</a>
                            @forelse($round->questions as $question)
                                <p><small class="text-muted">Question {{$loop->iteration}}:</small> {{ $question->question}}</p>
                              @empty
@@ -44,6 +43,7 @@
                              @endforelse
                            @else
                            <a class="btn btn-success" href=/admin/unlock-round/{{$round->id}}>Reopen {{ $round->name }}</a>
+                            <a class="btn btn-danger"  onclick="return confirm('Are you sure you want to close this round?')"  href=/admin/grade-round/{{$round->id}}>Regrade {{ $round->name }}</a>
                            @endif
                              <hr>
                          </div>
