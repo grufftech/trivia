@@ -5,7 +5,7 @@
             <div class="container z-2">
                 <div class="row justify-content-center text-center pt-6 pb-3">
                     <div class="col-12 col-md-8">
-                        <h1 class="display-1 font-weight-light mb-3">Online Trivia<span class="pixel-pro-badge font-weight-bolder text-primary">SOCIAL DISTANCED</span></h1>
+                        <h1 class="display-1 font-weight-light mb-3">Online Trivia</h1>
                         @if (!\Auth::check())
                         <p>Please <a class="btn btn-primary" href={{ url('/login') }}>Login</a> to play Trivia!</p>
                         @else
