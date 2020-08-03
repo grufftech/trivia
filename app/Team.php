@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     protected $table = 'teams';
-    protected $fillable = [ 'name','game_id'];
+    protected $fillable = [ 'name','game_id','credit_modifier'];
     public function game(){
         return $this->belongsTo('App\Game');
     }

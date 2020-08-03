@@ -83,7 +83,7 @@ class Answers extends Controller
       
       // if the round is no longer accepting answers, you're gonna have a bad time. 
       if ($round->accepting_answers == false){
-        abort(403, 'Sorry! '.$round->name.' is no longer accepting answers.');
+        $answer .= " ****LATE****";
       }
 
       // if there is an answer from this team & for this question, delete it. 
@@ -102,6 +102,11 @@ class Answers extends Controller
       $ans->save();
     }
     
-    return redirect()->route('play.joingame',$game->id)->with('success', $round->name.' Saved, Good Luck!');   
+    // if the round is no longer accepting answers, you're gonna have a bad time. 
+    if ($round->accepting_answers == false){
+      return redirect()->route('play.joingame',$game->id)->with('success', $round->name.' Answers were saved, but you were late.  You will be judged by the Hot Tub Tubber.');   
+    }else{
+      return redirect()->route('play.joingame',$game->id)->with('success', $round->name.' Answers saved, Good Luck!');   
+    }
   }
 }
