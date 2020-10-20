@@ -98,7 +98,7 @@ class RoundsTableSeeder extends Seeder {
 }
 class QuestionsTableSeeder extends Seeder {
   public function run(){
-    $generate_questions = 10;
+    $generate_questions = 8;
     DB::table('questions')->delete();
     $rounds = Round::all();
     foreach ($rounds as $round){
@@ -120,7 +120,7 @@ class JeopardyTableSeeder extends Seeder {
       Jeopardy::create(array('question' => 'It\'s reported the Rolling Stones took their name from the following blues song by this singer:', 'answer' => 'Muddy Waters'));
       Jeopardy::create(array('question' => 'From the Latin for "to correct", it\'s an adjective for someone who can\'t be corrected or reformed', 'answer' => 'incorrigible'));
       Jeopardy::create(array('question' => 'These insects also known as plant lice are captured & "milked" by many ants for the honeydew liquid they produce', 'answer' => 'aphids'));
-      Jeopardy::create(array('question' => '[Audio] Called "Buffoons of \'60s British Rock Invasion", they were led by an ex-milkman named Garrity:', 'answer' => 'Freddie And The Dreamers'));
+      Jeopardy::create(array('question' => 'Called "Buffoons of \'60s British Rock Invasion", they were led by an ex-milkman named Garrity:', 'answer' => 'Freddie And The Dreamers'));
       Jeopardy::create(array('question' => 'In 1964 Elvis bought a yacht owned by this ex-president for $55,000, then donated it to the March of Dimes', 'answer' => 'FDR'));
       Jeopardy::create(array('question' => '(Jimmy of the Clue Crew at Carnegie Mellon University in Pittsburgh)  From the Greek for "self-acting", it\'s another word for a robot that mimics human actions', 'answer' => 'automaton'));
       Jeopardy::create(array('question' => 'A master craftsman, he invented the axe & built the labyrinth', 'answer' => 'Daedalus'));

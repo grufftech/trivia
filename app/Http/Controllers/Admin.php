@@ -7,6 +7,7 @@ use App\Team;
 use App\Round;
 use App\Question;
 use App\Answer;
+use App\User;
 
 use Auth0User;
 use DB;
@@ -22,11 +23,20 @@ class Admin extends Controller
     }
     public function index(){
       $games = Game::all();
+      $oldgames = Game::onlyTrashed()->get();
       $teams = Team::all();
       $rounds = Round::all();
+      $users = User::all();
 
-      return view('admin.index',compact('games'));
+      return view('admin.index',compact('games','users','oldgames'));
     }
+
+    public function userIndex(){
+      $users = User::All();
+      return view('admin.userindex',compact('users'));
+    }
+
+
     public function showGameAdmin($id){
       $game = Game::findOrFail($id);
 

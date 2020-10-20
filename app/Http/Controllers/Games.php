@@ -50,6 +50,12 @@ class Games extends Controller
       $game->delete();
       return redirect()->route('admin.index');
     }
+    public function restore($id)
+    {
+      $game = Game::withTrashed()->findOrFail($id);
+      $game->restore();
+      return redirect()->route('admin.index');
+    }
 
 
 }
